@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.danfeng.customviewstudy.hencoder1.Hencoder11Fragment;
+import com.danfeng.customviewstudy.hencoder1.Hencoder12Fragment;
+import com.danfeng.customviewstudy.hencoder1.Hencoder13Fragment;
 
 /**
  * Created by D22400 on 2018/7/16.
@@ -48,6 +50,12 @@ public class ContentActivity extends AppCompatActivity {
             switch (mFragmentNo) {
                 case "Hencoder 1-1":
                     fragment = new Hencoder11Fragment();
+                    break;
+                case "Hencoder 1-2":
+                    fragment = new Hencoder12Fragment();
+                    break;
+                case "Hencoder 1-3":
+                    fragment = new Hencoder13Fragment();
                     break;
             }
             if (fragment != null) {

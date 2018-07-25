@@ -8,10 +8,23 @@
     tools:context="com.danfeng.customviewstudy.MainActivity">
 
     <Button
-        android:id="@+id/btn_one"
-        android:text="@string/btn_one_label"
+        android:id="@+id/btn_one_one"
         android:layout_width="match_parent"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp"
+        android:text="@string/btn_one_one_label"/>
 
+    <Button
+        android:id="@+id/btn_one_two"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/btn_one_two_label"
+        app:layout_constraintTop_toBottomOf="@id/btn_one_one"/>
+
+    <Button
+        android:id="@+id/btn_one_three"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="@string/btn_one_three_label"
+        app:layout_constraintTop_toBottomOf="@id/btn_one_two"/>
 
 </android.support.constraint.ConstraintLayout>

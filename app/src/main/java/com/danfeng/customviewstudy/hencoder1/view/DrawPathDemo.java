@@ -4,34 +4,38 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * Created by D22400 on 2018/7/16.
+ * Created by D22400 on 2018/7/17.
  * Email:danfeng.qiu@ck-telecom.com
  * Describe:
  */
 
-public class DrawDemo extends View {
+public class DrawPathDemo extends View {
 
     private Paint mPaint;
 
-    private int mDefaultWidth = 100;
-    private int mDefaultHeight = 100;
+    private int mDefaultWidth = 300;
+    private int mDefaultHeight = 300;
+    private Path mPath;
 
-    public DrawDemo(Context context) {
+    public DrawPathDemo(Context context) {
         this(context, null, 0);
     }
 
-    public DrawDemo(Context context, @Nullable AttributeSet attrs) {
+    public DrawPathDemo(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public DrawDemo(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public DrawPathDemo(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPath = new Path();
     }
 
     @Override
@@ -45,9 +49,9 @@ public class DrawDemo extends View {
             setMeasuredDimension(mDefaultWidth, mDefaultHeight);
         } else if (widthMeasureMode != MeasureSpec.EXACTLY) {
             setMeasuredDimension(widthMeasureSize, mDefaultHeight);
-        } else if (heightMeasureMode != MeasureSpec.EXACTLY){
+        } else if (heightMeasureMode != MeasureSpec.EXACTLY) {
             setMeasuredDimension(mDefaultWidth, heightMeasureSize);
-        }else {
+        } else {
             setMeasuredDimension(widthMeasureSize, heightMeasureSize);
         }
     }
@@ -55,7 +59,16 @@ public class DrawDemo extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        mPaint.setColor(Color.RED);
-        canvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, getMeasuredWidth() / 2, mPaint);
+        mPaint.setColor(Color.BLACK);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPath.moveTo(0, 0);
+//        mPath.quadTo(0, 150, 300, 150);
+        mPath.lineTo(100, 100);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mPath.arcTo(100, 100, 300, 300, 0, -90, true);
+        }
+        mPath.close();
+        canvas.drawPath(mPath, mPaint);
+
     }
 }

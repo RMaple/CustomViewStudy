@@ -11,15 +11,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button oneButton = findViewById(R.id.btn_one);
-        oneButton.setOnClickListener(this);
+        Button oneoneButton = findViewById(R.id.btn_one_one);
+        oneoneButton.setOnClickListener(this);
+        Button onetwoButton = findViewById(R.id.btn_one_two);
+        onetwoButton.setOnClickListener(this);
+        Button onethreeButton = findViewById(R.id.btn_one_three);
+        onethreeButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_one:
+            case R.id.btn_one_one:
                 startActivity(ContentActivity.newIntent(MainActivity.this, "Hencoder 1-1"));
+                break;
+            case R.id.btn_one_two:
+                startActivity(ContentActivity.newIntent(MainActivity.this, "Hencoder 1-2"));
+                break;
+            case R.id.btn_one_three:
+                startActivity(ContentActivity.newIntent(MainActivity.this, "Hencoder 1-3"));
                 break;
         }
     }
